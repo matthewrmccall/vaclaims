@@ -1,0 +1,19 @@
+{
+  "name": "vaclaims",
+  "version": "1.0.0",
+  "description": "app for vaclaims.us site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewrmccall/vaclaims.git"
+  },
+  "author": "Matt McCall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewrmccall/vaclaims/issues"
+  },
+  "homepage": "https://github.com/matthewrmccall/vaclaims#readme"
+}
