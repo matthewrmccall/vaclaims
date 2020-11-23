@@ -1,17 +1,19 @@
-// glyph is a signup form for veterans disability compensation help
+// vaclaims is a signup form for veterans disability compensation help
 // import React and use hooks to create objects
-import React, { useReducer, useState} from 'react';
+// hooks let you use state without writing a class
+import React, { useReducer, useState } from 'react';
 import './App.css';
 
 // reducer function that takes inputs state and event
 const formReducer = (state, event) => {
+  // when the event.reset property is true
+  // reset the field values to empty strings
   if(event.reset) {
     return {
       name: '',
       email: '',
       phone: '',
       type: '',
-      count: 0,
       'contact': false
     }
   }
@@ -22,14 +24,29 @@ const formReducer = (state, event) => {
   }
 }
 
+// MAIN BODY OF APPLICATION
 function App() {
-  const [formData, setFormData] = useReducer(formReducer, { count: 100 });
+  // variables formData and setFormData are assigned to:
+  // the hook useReducer called with both the parameter formReducer
+  // and the second argument: an object containing the initial states of
+  // all the form fields as keys
+  const [formData, setFormData] = useReducer(formReducer, {
+    name: '',
+    email: '',
+    phone: '',
+    type: '',
+    'contact': false
+  });
+  // variables submitting and setSubmitting are assigned to the result of:
+  // calling the useState hook with a parameter of false
   const [submitting, setSubmitting] = useState(false);
-
+  // function handleSubmit has parameter event
   const handleSubmit = event => {
+  // run the event.preventDefault property in this function
     event.preventDefault();
+  // set the setSubmitting variable to true
     setSubmitting(true);
-// show Submitting Form message for 3 sec on button click
+  // show Submitting Form message for 3 sec on button click
     setTimeout(() => {
       setSubmitting(false);
       setFormData({
@@ -61,7 +78,7 @@ function App() {
       <div>
         You are submitting the following:
         <ul>
-          {Object.entries(formData).map(([name, value]) => (
+          {Object.entries(formData).map((name, value) => (
             <li key={name}><strong>{name}</strong>:{value.toString()}</li>
           ))}
           </ul>
@@ -88,16 +105,6 @@ function App() {
             <option value="VA Appeal">VA Appeal</option>
             <option value="Not sure">I'm not sure</option>
           </select>
-        </label>
-
-        <label>
-        <p>Input field is count</p>
-        <input type="number"
-        name="count"
-        disabled={formData.type !== 'Not sure'}
-        onChange={handleChange}
-        step="1"
-        value={formData.count}/>
         </label>
 
         <label>
